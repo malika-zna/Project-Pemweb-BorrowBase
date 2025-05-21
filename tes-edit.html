@@ -21,7 +21,7 @@
                 <img src="logo.svg" alt="">
             </div>
             <div class="nav beranda">
-                <a href="">
+                <a href="tes-beranda.html">
                     <span class="material-symbols-outlined">
                         home
                     </span>
@@ -70,23 +70,25 @@
             </div>
         </div>
         <div class="sidebar-menu">
-            <h1><span class="material-symbols-outlined">
-                    arrow_back_ios
-                </span>Buku</h1>
+            <h1><a href="tes-beranda.html"><span class="material-symbols-outlined">
+                        arrow_back_ios
+                    </span>Buku</a></h1>
             <div class="menu">
-                <p class="sidebar-aktif"><span class="material-symbols-outlined">
-                        book_2
-                    </span>Daftar Buku</p>
-                <p><span class="material-symbols-outlined">
-                        add_circle
-                    </span>Tambah Buku</p>
+                <p class="sidebar-aktif"><a href="tes-daftar.html"><span class="material-symbols-outlined">
+                            book_2
+                        </span>Daftar Buku</a></p>
+                <p><a href="tes-tambah.html">
+                        <span class="material-symbols-outlined">
+                            add_circle
+                        </span>Tambah Buku
+                    </a></p>
             </div>
         </div>
     </div>
     <div class="konten">
-        <h1><span class="material-symbols-outlined">
-                arrow_back_ios
-            </span>Edit Buku</h1>
+        <h1><a href="tes-detail.html"><span class="material-symbols-outlined">
+                    arrow_back_ios
+                </span>Edit Buku</a></h1>
         <form class="form" action="">
             <div class="isian">
                 <label for="judul">Judul Buku</label>
@@ -105,7 +107,7 @@
             <div class="baris-isian baris2">
                 <div class="isian">
                     <label for="kategori">Kategori</label>
-                    <select name="kategori" id="">
+                    <select name="kategori" id="" required>
                         <option value="">Pilih Kategori</option>
                         <option value="Fiksi">Fiksi</option>
                         <option value="Nonfiksi">Nonfiksi</option>
@@ -113,23 +115,23 @@
                 </div>
                 <div class="isian kasih-jarak">
                     <label for="status">Status</label>
-                    <select name="status" id="">
+                    <select name="status" id="" required>
                         <option value="Fiksi">Tersedia</option>
                         <option value="Nonfiksi">Habis</option>
                     </select>
                 </div>
                 <div class="isian kasih-jarak">
                     <label for="jumlah">Jumlah</label>
-                    <input name="jumlah" type="text" placeholder="100">
+                    <input name="jumlah" type="text" placeholder="100" required>
                 </div>
             </div>
             <div class="isian">
                 <label for="penulis">Penulis</label>
-                <input name="penulis" type="text" placeholder="Penulis 1, Penulis 2, Penulis 3">
+                <input name="penulis" type="text" placeholder="Penulis 1, Penulis 2, Penulis 3" required>
             </div>
             <div class="isian">
                 <label for="peneribit">Penerbit</label>
-                <input name="penerbit" type="text" placeholder="PT xxx xxxx">
+                <input name="penerbit" type="text" placeholder="PT xxx xxxx" required>
             </div>
             <div class="isian">
                 <label for="sampul">Sampul</label>
@@ -137,13 +139,13 @@
             </div>
             <div class="isian">
                 <label for="deskripsi">Deskripsi</label>
-                <textarea name="deskripsi" id="isian-deskripsi"
+                <textarea required name="deskripsi" id="isian-deskripsi"
                     placeholder="Ini deskripsi/sinopsis bukunya. Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat."></textarea>
             </div>
         </form>
         <div class="tombol">
-            <button class="bt-hapus">Hapus</button>
-            <button class="bt-edit">Edit</button>
+            <button class="bt-kembali" onclick="window.location.href='tes-daftar.html'">Kembali</button>
+            <button class="bt-edit" onclick="window.location.href='tes-detail.html'">Simpan</button>
         </div>
     </div>
 </body>

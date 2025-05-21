@@ -21,7 +21,7 @@
                 <img src="logo.svg" alt="">
             </div>
             <div class="nav beranda">
-                <a href="">
+                <a href="tes-beranda.html">
                     <span class="material-symbols-outlined">
                         home
                     </span>
@@ -70,23 +70,25 @@
             </div>
         </div>
         <div class="sidebar-menu">
-            <h1><span class="material-symbols-outlined">
-                    arrow_back_ios
-                </span>Buku</h1>
+            <h1><a href="tes-beranda.html"><span class="material-symbols-outlined">
+                        arrow_back_ios
+                    </span>Buku</a></h1>
             <div class="menu">
-                <p class="sidebar-aktif"><span class="material-symbols-outlined">
-                        book_2
-                    </span>Daftar Buku</p>
-                <p><span class="material-symbols-outlined">
-                        add_circle
-                    </span>Tambah Buku</p>
+                <p class="sidebar-aktif"><a href="tes-daftar.html"><span class="material-symbols-outlined">
+                            book_2
+                        </span>Daftar Buku</a></p>
+                <p><a href="tes-tambah.html">
+                        <span class="material-symbols-outlined">
+                            add_circle
+                        </span>Tambah Buku
+                    </a></p>
             </div>
         </div>
     </div>
     <div class="konten">
-        <h1><span class="material-symbols-outlined">
-                arrow_back_ios
-            </span>Detail Buku</h1>
+        <h1><a href="tes-daftar.html"><span class="material-symbols-outlined">
+                    arrow_back_ios
+                </span>Detail Buku</a></h1>
         <div class="umum-buku">
             <div class="cover">
 
@@ -137,8 +139,9 @@
             </table>
         </div>
         <div class="tombol">
-            <button class="bt-hapus">Hapus</button>
-            <button class="bt-edit">Edit</button>
+            <button class="bt-hapus"
+                onclick="window.alert('Apakah anda yakin ingin menghapus data buku ini? Data yang dihapus tidak dapat dikembalikan.')">Hapus</button>
+            <button class="bt-edit" onclick="window.location.href='tes-edit.html'">Edit</button>
         </div>
     </div>
 </body>
