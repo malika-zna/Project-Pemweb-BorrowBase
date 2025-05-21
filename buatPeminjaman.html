@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Peminjaman Baru</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <span style="font-size: 10px; color: #FF6B6B;">borrow easy</span>
+        </div>
+        <div class="sidebar-menu">
+            <a href="#" class="menu-item">
+                <i class="fas fa-home"></i>
+                Beranda
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-book"></i>
+                Buku
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-th-large"></i>
+                Kategori
+            </a>
+            <a href="#" class="menu-item active">
+                <i class="fas fa-file-alt"></i>
+                Pinjam
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-users"></i>
+                Anggota
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-user-shield"></i>
+                Admin
+            </a>
+        </div>
+    </div>
+
+    <!-- Main content - Buat Peminjaman Baru Page -->
+    <div class="main-content">
+        <div class="page-header">
+            <a href="status-peminjaman.html" class="back-button">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <h1 class="page-title">Buat Peminjaman Baru</h1>
+        </div>
+
+        <div class="form-container">
+            <form id="buat-form">
+                <div class="form-group">
+                    <label for="nama-anggota">Nama Anggota</label>
+                    <input type="text" id="nama-anggota" class="form-control" placeholder="Misal: Siti Rahma">
+                </div>
+
+                <div class="form-group">
+                    <label for="id-member">ID Member</label>
+                    <input type="text" id="id-member" class="form-control" placeholder="Misal: 0987">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <div class="select-wrapper">
+                                <select id="kategori" class="form-control">
+                                    <option value="" disabled selected>Pilih Kategori Buku</option>
+                                    <option value="filsafat">Filsafat</option>
+                                    <option value="novel">Novel</option>
+                                    <option value="bisnis">Bisnis</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="kuantitas">Kuantitas</label>
+                            <div class="select-wrapper">
+                                <select id="kuantitas" class="form-control">
+                                    <option value="" disabled selected>Pilih Kuantitas</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="judul-buku">Judul buku</label>
+                    <input type="text" id="judul-buku" class="form-control" placeholder="Misal: Filosofi Teras">
+                </div>
+
+                <div class="form-group">
+                    <label for="penulis">Penulis</label>
+                    <input type="text" id="penulis" class="form-control" placeholder="Misal: Payung Teduh">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="tanggal-pinjam">Tanggal Peminjaman</label>
+                            <div class="select-wrapper">
+                                <input type="text" id="tanggal-pinjam" class="form-control date-field" placeholder="Pilih Tanggal" readonly>
+                                <span class="calendar-icon"><i class="fas fa-calendar-alt"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="tanggal-kembali">Tanggal Pengembalian</label>
+                            <div class="select-wrapper">
+                                <input type="text" id="tanggal-kembali" class="form-control date-field" placeholder="Pilih Tanggal" readonly>
+                                <span class="calendar-icon"><i class="fas fa-calendar-alt"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="button" class="btn btn-cancel" onclick="location.href='status-peminjaman.html'">Batal</button>
+                    <button type="button" class="btn btn-save" onclick="showConfirmModal()">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="create-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Buat Peminjaman Baru</h2>
+            </div>
+            <div class="modal-body">
+                <p>Apakah anda yakin ingin membuat peminjaman buku baru?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-cancel" onclick="hideModal()">Tidak</button>
+                <button class="btn btn-save" onclick="saveChanges()">Iya</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show modal function
+        function showConfirmModal() {
+            document.getElementById('create-modal').classList.remove('hidden');
+        }
+
+        // Hide modal function
+        function hideModal() {
+            document.getElementById('create-modal').classList.add('hidden');
+        }
+
+        // Save changes function
+        function saveChanges() {
+            hideModal();
+            // Redirect to status page after saving
+            window.location.href = 'status-peminjaman.html';
+        }
+    </script>
+</body>
+</html>
