@@ -73,7 +73,7 @@
             <h1 style="margin: 0; display:inline;"><span>Edit Anggota</span></h1>
         </div>
 
-        <form class="form" action="">
+        <form class="form" action="" id="editForm">
             <div class="isian">
                 <label for="nim">NIM</label>
                 <input name="nim" type="text" placeholder="245150XXXXXXXXXXXX" value="2451502011111111" style="color:#000;background:#fff6e8;">
@@ -99,8 +99,8 @@
                 <input name="kota" type="text" placeholder="Masukkan kota" value="Malang" style="color:#000;background:#fff6e8;">
             </div>
             <div class="tombol">
-                <button class="batal">Batal</button>
-                <button class="simpan">Simpan</button>
+                <button type="button" class="batal" onclick="window.location.href='ale-lihat-anggota.html'">Batal</button>
+                <button type="button" class="simpan" onclick="handleSimpan()">Simpan</button>
             </div>
         </form>
         <img class="decorationimg" src="yellowflower.svg" />
@@ -118,6 +118,13 @@
       input.addEventListener('input', updateBg);
       updateBg(); // set initial state
     });
+
+    function handleSimpan() {
+        // Di sini akan ditambahkan logika untuk UPDATE data
+        // Untuk sekarang kita hanya tampilkan alert
+        alert('Data berhasil diperbarui');
+        window.location.href = 'ale-lihat-anggota.html';
+    }
     </script>
 </body>
 
