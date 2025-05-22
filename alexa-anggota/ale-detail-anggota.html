@@ -1,0 +1,153 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Anggota</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Tilt+Warp&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styleale.css" />
+</head>
+
+<body>
+    <div class="panel-samping">
+        <div class="navbar">
+            <div class="nav logo">
+                <img src="logo.svg" alt="">
+            </div>
+            <div class="nav beranda">
+                <a href="">
+                    <span class="material-symbols-outlined">home</span>
+                    <p>Beranda</p>
+                </a>
+            </div>
+            <div class="nav buku">
+                <a href="">
+                    <span class="material-symbols-outlined">book_2</span>
+                    <p>Buku</p>
+                </a>
+            </div>
+            <div class="nav kategori">
+                <a href="">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <p>Kategori</p>
+                </a>
+            </div>
+            <div class="nav pinjam">
+                <a href="">
+                    <span class="material-symbols-outlined">note_add</span>
+                    <p>Pinjam</p>
+                </a>
+            </div>
+            <div class="nav nav-aktif anggota">
+                <a href="">
+                    <span class="material-symbols-outlined">groups</span>
+                    <p>Anggota</p>
+                </a>
+            </div>
+            <div class="nav admin">
+                <a href="">
+                    <span class="material-symbols-outlined">person</span>
+                    <p>Admin</p>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <h1><span class="material-symbols-outlined">arrow_back_ios</span>Anggota</h1>
+            <div class="menu">
+                <a href="ale-tambah-anggota.html" style="text-decoration:none;color:inherit;"><p><span class="material-symbols-outlined">edit</span>Anggota Baru</p></a>
+                <a href="ale-lihat-anggota.html" style="text-decoration:none;color:inherit;"><p class="sidebar-aktif"><span class="material-symbols-outlined">groups</span>Lihat Data Anggota</p></a>
+            </div>
+        </div>
+    </div>
+
+    <main class="konten" role="main">
+        <div style="display: flex; align-items: center; gap: 2px; margin-bottom: 20px; margin-top: 20px;">
+            <a href="ale-lihat-anggota.html" style="text-decoration:none; color:inherit; display:inline-flex; align-items:center;">
+                <span class="material-symbols-outlined" style="font-size: 20px;">arrow_back_ios</span>
+            </a>
+            <h1 style="margin: 0; display:inline;">Detail Anggota</h1>
+        </div>
+        <section class="detail-anggota-section">
+            <h1 class="judul-section">Informasi Anggota</h1>
+            <div class="info-row">
+                <p class="info-label">ID Anggota</p>
+                <p class="info-value">XX-XX</p>
+            </div>
+            <div class="info-row">
+                <p class="info-label">NIM</p>
+                <p class="info-value">245150XXXXX</p>
+            </div>
+            <div class="info-row">
+                <p class="info-label">Nama Lengkap</p>
+                <p class="info-value">Alexandra Pritha Sari</p>
+            </div>
+            <div class="info-row">
+                <p class="info-label">Email</p>
+                <p class="info-value">alexa@gmail.com</p>
+            </div>
+            <div class="info-row">
+                <p class="info-label">Alamat Rumah</p>
+                <p class="info-value">Jalanin aja dulu</p>
+            </div>
+            <div class="info-row">
+                <p class="info-label">Asal Kota</p>
+                <p class="info-value">London</p>
+            </div>
+        </section>
+        <section>
+            <h1 class="judul-section">Daftar Buku Dipinjam</h1>
+            <table aria-label="Daftar Buku Dipinjam" class="daftar">
+                <thead>
+                    <tr class="judul">
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Judul Buku</th>
+                        <th scope="col">Kuantitas</th>
+                        <th scope="col">Jatuh Tempo</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XXXXXXXXXX</td>
+                        <td style="text-align:left;">Cara Menyelesaikan...</td>
+                        <td><span class="jumlah-buku">1</span></td>
+                        <td>28/07/2025</td>
+                        <td><span class="status-sudah">Sudah Kembali</span></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXX</td>
+                        <td style="text-align:left;">Tugas yang Membandel..</td>
+                        <td><span class="jumlah-buku">2</span></td>
+                        <td>28/06/2025</td>
+                        <td><span class="status-dipinjam">Dipinjam</span></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXX</td>
+                        <td style="text-align:left;">Please Watashi Capek...</td>
+                        <td><span class="jumlah-buku">2</span></td>
+                        <td>28/05/2025</td>
+                        <td><span class="status-dipinjam">Dipinjam</span></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXX</td>
+                        <td style="text-align:left;">Akhirnya selesai</td>
+                        <td><span class="jumlah-buku">30</span></td>
+                        <td>28/04/2025</td>
+                        <td><span class="status-terlambat">Terlambat</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="padding-bottom: 50px;"></div>
+        </section>
+        <img class="decorationimg" src="yellowflower.svg" />
+    </main>
+    <script async="" src="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+    </script>
+</body>
+
+</html>
