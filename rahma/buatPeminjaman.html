@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Peminjaman Baru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: #f0f0f0;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 92px;
+            background-color: #FFEAAA;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            left: 0;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 15px 0;
+            cursor: pointer;
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .menu-item i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .menu-item.active {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Main content styles */
+        .main-content {
+            flex: 1;
+            margin-left: 92px;
+            padding: 20px;
+            width: calc(100% - 92px);
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            font-size: 24px;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: bold;
+            flex: 1;
+        }
+
+        /* Form styles */
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+        }
+
+        .dropdown-icon {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            pointer-events: none;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .calendar-icon {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .date-field {
+            cursor: pointer;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-column {
+            flex: 1;
+        }
+
+        /* Button styles */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 40px;
+            border-radius: 25px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .btn-cancel {
+            background-color: #7FD1DE;
+            color: black;
+        }
+
+        .btn-save {
+            background-color: #FFB8C7;
+            color: black;
+        }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            margin-bottom: 15px;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* Utility classes */
+        .hidden {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <span style="font-size: 10px; color: #FF6B6B;">borrow easy</span>
+        </div>
+        <div class="sidebar-menu">
+            <a href="#" class="menu-item">
+                <i class="fas fa-home"></i>
+                Beranda
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-book"></i>
+                Buku
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-th-large"></i>
+                Kategori
+            </a>
+            <a href="#" class="menu-item active">
+                <i class="fas fa-file-alt"></i>
+                Pinjam
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-users"></i>
+                Anggota
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-user-shield"></i>
+                Admin
+            </a>
+        </div>
+    </div>
+
+    <!-- Main content - Buat Peminjaman Baru Page -->
+    <div class="main-content">
+        <div class="page-header">
+            <a href="status-peminjaman.html" class="back-button">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <h1 class="page-title">Buat Peminjaman Baru</h1>
+        </div>
+
+        <div class="form-container">
+            <form id="buat-form">
+                <div class="form-group">
+                    <label for="nama-anggota">Nama Anggota</label>
+                    <input type="text" id="nama-anggota" class="form-control" placeholder="Misal: Siti Rahma">
+                </div>
+
+                <div class="form-group">
+                    <label for="id-member">ID Member</label>
+                    <input type="text" id="id-member" class="form-control" placeholder="Misal: 0987">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <div class="select-wrapper">
+                                <select id="kategori" class="form-control">
+                                    <option value="" disabled selected>Pilih Kategori Buku</option>
+                                    <option value="filsafat">Filsafat</option>
+                                    <option value="novel">Novel</option>
+                                    <option value="bisnis">Bisnis</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="kuantitas">Kuantitas</label>
+                            <div class="select-wrapper">
+                                <select id="kuantitas" class="form-control">
+                                    <option value="" disabled selected>Pilih Kuantitas</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="judul-buku">Judul buku</label>
+                    <input type="text" id="judul-buku" class="form-control" placeholder="Misal: Filosofi Teras">
+                </div>
+
+                <div class="form-group">
+                    <label for="penulis">Penulis</label>
+                    <input type="text" id="penulis" class="form-control" placeholder="Misal: Payung Teduh">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="tanggal-pinjam">Tanggal Peminjaman</label>
+                            <div class="select-wrapper">
+                                <input type="text" id="tanggal-pinjam" class="form-control date-field" placeholder="Pilih Tanggal" readonly>
+                                <span class="calendar-icon"><i class="fas fa-calendar-alt"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="tanggal-kembali">Tanggal Pengembalian</label>
+                            <div class="select-wrapper">
+                                <input type="text" id="tanggal-kembali" class="form-control date-field" placeholder="Pilih Tanggal" readonly>
+                                <span class="calendar-icon"><i class="fas fa-calendar-alt"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="button" class="btn btn-cancel" onclick="location.href='status-peminjaman.html'">Batal</button>
+                    <button type="button" class="btn btn-save" onclick="showConfirmModal()">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="create-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Buat Peminjaman Baru</h2>
+            </div>
+            <div class="modal-body">
+                <p>Apakah anda yakin ingin membuat peminjaman buku baru?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-cancel" onclick="hideModal()">Tidak</button>
+                <button class="btn btn-save" onclick="saveChanges()">Iya</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show modal function
+        function showConfirmModal() {
+            document.getElementById('create-modal').classList.remove('hidden');
+        }
+
+        // Hide modal function
+        function hideModal() {
+            document.getElementById('create-modal').classList.add('hidden');
+        }
+
+        // Save changes function
+        function saveChanges() {
+            hideModal();
+            // Redirect to status page after saving
+            window.location.href = 'status-peminjaman.html';
+        }
+    </script>
+</body>
+</html>
