@@ -1,0 +1,47 @@
+-- Database PEMWEB
+CREATE DATABASE Perpusfafa;
+
+-- Pilih database yang baru dibuat
+USE Perpusfafa;
+
+-- DDL (Data Definition Language)
+
+-- Tabel untuk menyimpan Kategori Buku
+CREATE TABLE Categories (
+    category_id INT PRIMARY KEY AUTO_INCREMENT,
+    category_name VARCHAR(50) UNIQUE NOT NULL,
+    category_description TEXT
+);
+
+-- Tabel untuk menyimpan Buku
+CREATE TABLE Books (
+    book_isbn VARCHAR(20) PRIMARY KEY,
+    book_title VARCHAR(50) NOT NULL,
+    book_description TEXT,
+    category_id INT, -- Foreign Key to Categories table
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE SET NULL
+);
+
+-- DML (Data Manipulation Language)
+
+-- Memasukkan data contoh ke tabel Categories
+INSERT INTO Categories (category_name, category_description) VALUES
+('Fiksi', 'Kategori fiksi mengacu pada karya sastra yang berisi cerita rekaan atau khayalan, bukan berdasarkan kejadian nyata.'),
+('Non-Fiksi', 'Buku atau karangan yang berisi fakta, berdasarkan hal-hal yang benar terjadi, dan dipertanggungjawabkan.');
+
+-- Memasukkan data contoh ke tabel Books
+-- Data untuk Kategori Fiksi (berdasarkan HalamanBukuFiksi.html dan MenambahBukuKeKategoriFiksi.html)
+INSERT INTO Books (book_isbn, book_title, book_description, category_id) VALUES
+('978-602-03-3498-JVM', 'Dunia Sophie', 'Deskripsi buku Dunia Sophie.', (SELECT category_id FROM Categories WHERE category_name = 'Fiksi')),
+('978-602-03-3499-KPR', 'Kesatria, Putri, dan Bintang Jatuh', 'Deskripsi buku Kesatria, Putri, dan Bintang Jatuh.', (SELECT category_id FROM Categories WHERE category_name = 'Fiksi'));
+
+
+-- Data untuk Kategori Non-Fiksi (berdasarkan HalamanBukuNonFiksi.html dan MenambahBukuKeKategoriNonFiksi.html)
+INSERT INTO Books (book_isbn, book_title, book_description, category_id) VALUES
+('978-602-03-3500-PKK', 'Pengantar Keilmuan Komputer', 'Deskripsi buku Pengantar Keilmuan Komputer.', (SELECT category_id FROM Categories WHERE category_name = 'Non-Fiksi')),
+('978-602-03-3501-PWB', 'Pemrograman Web', 'Deskripsi buku Pemrograman Web.', (SELECT category_id FROM Categories WHERE category_name = 'Non-Fiksi')),
+('978-602-03-3502-CKD', 'Cara Kerja Dunia', 'Deskripsi buku Cara Kerja Dunia.', (SELECT category_id FROM Categories WHERE category_name = 'Non-Fiksi')),
+('978-602-03-3503-KMN', 'Komet Minor', 'Deskripsi buku Komet Minor.', (SELECT category_id FROM Categories WHERE category_name = 'Non-Fiksi')),
+('978-602-03-3504-DMD', 'Dasar Matematika Diskrit', 'Deskripsi buku Dasar Matematika Diskrit.', (SELECT category_id FROM Categories WHERE category_name = 'Non-Fiksi')),
+('978-602-03-3505-ILF', 'Ilmu Filsafat', 'Deskripsi buku Ilmu Filsafat.', (SELECT category_id FROM Categories WHERE category_name = 'Non-Fiksi') ),
+('978-602-03-3506-SDA', 'Sejarah Dunia Abad 19', 'Deskripsi buku Sejarah Dunia Abad 19.', (SELECT category_id FROM Categories WHERE category_name = 'Non-Fiksi'));
