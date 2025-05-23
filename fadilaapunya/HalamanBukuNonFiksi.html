@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Buku Fiksi</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Tilt+Warp&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="stylefafa.css">
+</head>
+
+<body>
+  <div class="panel-samping">
+    <div class="navbar">
+      <div class="nav logo">
+        <img src="logo.svg" alt="">
+      </div>
+      <div class="nav beranda">
+        <a href="">
+          <span class="material-symbols-outlined">
+            home
+          </span>
+          <p>Beranda</p>
+        </a>
+      </div>
+      <div class="nav buku">
+        <a href="">
+          <span class="material-symbols-outlined">
+            book_2
+          </span>
+          <p>Buku</p>
+        </a>
+      </div>
+      <div class="nav nav-aktif kategori">
+        <a href="">
+          <span class="material-symbols-outlined">
+            grid_view
+          </span>
+          <p>Kategori</p>
+        </a>
+      </div>
+      <div class="nav pinjam">
+        <a href="">
+          <span class="material-symbols-outlined">
+            note_add
+          </span>
+          <p>Pinjam</p>
+        </a>
+      </div>
+      <div class="nav anggota">
+        <a href="">
+          <span class="material-symbols-outlined">
+            groups
+          </span>
+          <p>Anggota</p>
+        </a>
+      </div>
+      <div class="nav admin">
+        <a href="">
+          <span class="material-symbols-outlined">
+            person
+          </span>
+          <p>Admin</p>
+        </a>
+      </div>
+    </div>
+    <div class="sidebar-menu">
+      <h1><span class="material-symbols-outlined">
+          arrow_back_ios
+        </span>Kategori</h1>
+      <div class="menu">
+        <p class="sidebar-aktif"><a href="">
+            <span class="material-symbols-outlined">
+              book_2
+            </span>Lihat Kategori</a></p>
+        </a></p>
+        <p><a href="MenambahKategoriBaru.html">
+            <span class="material-symbols-outlined">
+              add_circle
+            </span>Tambah Kategori Baru</a></p>
+        </a></p>
+        <p><a href="MenghapusKategori.html">
+            <span class="material-symbols-outlined">
+              delete
+            </span>Hapus Kategori</a></p>
+        </a></p>
+      </div>
+    </div>
+  </div>
+  <div class="konten">
+    <h1>
+      <span class="material-symbols-outlined" id="back-kategori">
+        arrow_back_ios
+      </span>
+      Kategori Non-Fiksi
+    </h1>
+    <div class="wadah-pencarian">
+      <span class="material-symbols-outlined search-icon">search</span>
+      <input type="text" class="kotak-pencarian" placeholder="Cari Buku" />
+    </div>
+
+    <div class="daftar-buku">
+      <div class="kartu-buku">
+        <div class="isi-buku">
+          <div>Sejarah</div>
+          <div>Dunia</div>
+          <div>Abad-19</div>
+        </div>
+        <button class="tombol-lihat" onclick="window.location.href='HalamanViewBukuNonFiksi.html'">Lihat Buku</button>
+      </div>
+
+      <div class="kartu-buku">
+        <div class="isi-buku">
+          <div>Ilmu</div>
+          <div>Filsafat</div>
+        </div>
+        <button class="tombol-lihat" onclick="window.location.href='HalamanViewBukuNonFiksi.html'">Lihat Buku</button>
+      </div>
+
+      <div class="kartu-buku">
+        <div class="isi-buku">
+          <div>Dasar</div>
+          <div>Matematika</div>
+          <div>Diskrit</div>
+        </div>
+        <button class="tombol-lihat" onclick="window.location.href='HalamanViewBukuNonFiksi.html'">Lihat Buku</button>
+      </div>
+
+      <div class="kartu-buku">
+        <div class="isi-buku">
+          <div>Pengantar</div>
+          <div>Keilmuan</div>
+          <div>Komputer</div>
+        </div>
+        <button class="tombol-lihat" onclick="window.location.href='HalamanViewBukuNonFiksi.html'">Lihat Buku</button>
+      </div>
+    </div>
+
+    <button class="tombol-tambah" onclick="window.location.href='MenambahBukuKeKategoriNonFiksi.html'">+</button>
+
+    <script>
+      // Ambil elemen input, daftar buku, dan ikon search
+      const input = document.querySelector('.kotak-pencarian');
+      const daftarBuku = document.querySelectorAll('.kartu-buku');
+      const searchIcon = document.querySelector('.search-icon');
+
+      function filterBuku() {
+        const keyword = input.value.toLowerCase();
+        daftarBuku.forEach(function (buku) {
+          const text = buku.innerText.toLowerCase();
+          if (text.includes(keyword)) {
+            buku.style.display = '';
+          } else {
+            buku.style.display = 'none';
+          }
+        });
+      }
+
+      input.addEventListener('input', filterBuku);
+
+      // Jika ikon search diklik, fokuskan ke input dan lakukan filter
+      searchIcon.addEventListener('click', function () {
+        input.focus();
+        filterBuku();
+      });
+    </script>
+
+    <script>
+      document.getElementById('back-kategori').addEventListener('click', function () {
+        window.location.href = 'HalamanKategoriBuku.html';
+      });
+    </script>
+
+</body>
+
+</html>
