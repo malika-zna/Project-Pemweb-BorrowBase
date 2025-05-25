@@ -1,6 +1,6 @@
 <h1 align=center><img src="logo.svg"></h1>
 <h3>Deskripsi</h3>
-Aplikasi kami yang bernama BorrowBase, merupakan sistem manajemen buku berbasis web yang dirancang menggunakan framework Laravel. Aplikasi ini bertujuan untuk memudahkan admin perpustakaan dalam mengelola perpustakaan. Secara garis besar, aplikasi ini menyediakan fitur utama yang terlihat pada panel navigasi, yaitu fitur beranda, buku, kategori, pinjam, anggota, dan admin. Dalam dokumen ini disajikan source code dan tampilan website ketika dijalankan.
+Aplikasi kami yang bernama BorrowBase, merupakan sistem manajemen buku berbasis web yang dirancang menggunakan framework Laravel. Aplikasi ini bertujuan untuk memudahkan admin perpustakaan dalam mengelola perpustakaan. Secara garis besar, aplikasi ini menyediakan fitur utama yang terlihat pada panel navigasi, yaitu fitur beranda, buku, kategori, pinjam, anggota, dan admin.
 <h3>Fitur Dasar</h3>
 <ul>
   <li>Login menggunakan email dan password</li>
