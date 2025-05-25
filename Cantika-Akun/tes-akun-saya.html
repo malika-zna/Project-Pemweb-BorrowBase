@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Akun Admin</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Tilt+Warp&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="Style.css" />
+</head>
+
+<body>
+    <div class="panel-samping">
+        <div class="navbar">
+            <div class="nav logo">
+                <img src="logo.svg" alt="">
+            </div>
+            <div class="nav beranda">
+                <a href="tes-beranda.html">
+                    <span class="material-symbols-outlined">home</span>
+                    <p>Beranda</p>
+                </a>
+            </div>
+            <div class="nav buku">
+                <a href="">
+                    <span class="material-symbols-outlined">book_2</span>
+                    <p>Buku</p>
+                </a>
+            </div>
+            <div class="nav kategori">
+                <a href="">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <p>Kategori</p>
+                </a>
+            </div>
+            <div class="nav pinjam">
+                <a href="">
+                    <span class="material-symbols-outlined">note_add</span>
+                    <p>Pinjam</p>
+                </a>
+            </div>
+            <div class="nav anggota">
+                <a href="">
+                    <span class="material-symbols-outlined">groups</span>
+                    <p>Anggota</p>
+                </a>
+            </div>
+            <div class="nav nav-aktif admin">
+                <a href="">
+                    <span class="material-symbols-outlined">person</span>
+                    <p>Admin</p>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <h1><a href="tes-beranda.html"><span class="material-symbols-outlined">arrow_back_ios</span>Admin</a></h1>
+            <div class="menu">
+                <p><a href="tes-tambah-akun.html"><span class="material-symbols-outlined">person_add</span>Tambah
+                        Akun</a></p>
+                <p><a href="tes-daftar-akun.html"><span class="material-symbols-outlined">list_alt</span>Daftar
+                        Akun</a></p>
+                <p class="sidebar-aktif"><a href="tes-akun-saya.html"><span
+                            class="material-symbols-outlined">touch_app</span>Akun Saya</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="konten konten-akun-saya">
+        <h2>Profil Saya</h2>
+        <div class="profil-container">
+          <div class="profil-kiri">
+            <div class="profil-foto">
+                <span class="material-symbols-outlined icon-profil-tengah">account_circle</span>
+                <div class="camera-icon">
+                  <span class="material-symbols-outlined">photo_camera</span>
+                </div>
+              </div>
+
+            <div class="form-kolom informasi-section">
+              <h3>Informasi</h3>
+              <label>Posisi</label>
+              <div class="form-barang">
+                <div class="dropdown-jabatan">
+                    <div class="dropdown-header" onclick="toggleDropdown()">
+                      <span id="selected-jabatan">Jabatan</span>
+                      <span id="dropdown-icon" class="material-symbols-outlined">keyboard_arrow_down</span>
+                    </div>
+                    <ul class="dropdown-list" id="dropdown-list">
+                      <li onclick="pilihJabatan(this)">Ketua Departemen</li>
+                      <li onclick="pilihJabatan(this)">Wakil Dekan</li>
+                      <li onclick="pilihJabatan(this)">Ketua Prodi</li>
+                      <li onclick="pilihJabatan(this)">Sekretaris Departemen</li>
+                      <li onclick="pilihJabatan(this)">Staf Ahli</li>
+                    </ul>
+                  </div>
+              </div>
+              <label>Tahun</label>
+              <div class="form-barang">
+                <input type="text" value="2015 - sekarang">
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+            </div>
+          </div>
+      
+          <div class="profil-kanan">
+            <div class="form-kolom">
+              <h3>Identitas</h3>
+              <label>Nama</label>
+              <div class="form-barang">
+                <input type="text" value="Mega Chan">
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+              <label>Nomor Kontak</label>
+              <div class="form-barang">
+                <input type="text" value="08xx-xxxx-xxxx">
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+            </div>
+      
+            <div class="form-kolom">
+              <h3>Keamanan</h3>
+              <label>Email</label>
+              <div class="form-barang">
+                <input type="email" value="xxxxxxxxxx@gmail.com">
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+              <label>Password</label>
+              <div class="form-barang">
+                <input type="password" value="********">
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <button class="logout-btn" onclick="tampilPopup()"><span
+                class="material-symbols-outlined">logout</span></button>
+    </div>
+
+    <div class="popup-keluar" id="popupKeluar">
+        <div class="popup-box">
+            <h4>Keluar dari akun</h4>
+            <p>Apakah anda yakin ingin keluar dari akun anda? Anda akan diminta untuk membuat akun baru jika keluar dari
+                akun ini!</p>
+            <div class="popup-aksi">
+                <button onclick="tutupPopup()">Tidak</button>
+                <button>iya</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+          const list = document.getElementById("dropdown-list");
+          const icon = document.getElementById("dropdown-icon");
+          list.style.display = list.style.display === "block" ? "none" : "block";
+          icon.textContent = list.style.display === "block" ? "keyboard_arrow_up" : "keyboard_arrow_down";
+        }
+      
+        function pilihJabatan(el) {
+          document.getElementById("selected-jabatan").textContent = el.textContent;
+          document.getElementById("dropdown-list").style.display = "none";
+          document.getElementById("dropdown-icon").textContent = "keyboard_arrow_down";
+        }
+      </script>
+      
+    <script>
+        function tampilPopup() {
+            document.getElementById("popupKeluar").style.display = "flex";
+        }
+
+        function tutupPopup() {
+            document.getElementById("popupKeluar").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

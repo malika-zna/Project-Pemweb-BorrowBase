@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Akun Admin</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Tilt+Warp&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <div class="panel-samping">
+        <div class="navbar">
+            <div class="nav logo">
+                <img src="logo.svg" alt="">
+            </div>
+            <div class="nav beranda">
+                <a href="tes-beranda.html">
+                    <span class="material-symbols-outlined">home</span>
+                    <p>Beranda</p>
+                </a>
+            </div>
+            <div class="nav buku">
+                <a href="">
+                    <span class="material-symbols-outlined">book_2</span>
+                    <p>Buku</p>
+                </a>
+            </div>
+            <div class="nav kategori">
+                <a href="">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <p>Kategori</p>
+                </a>
+            </div>
+            <div class="nav pinjam">
+                <a href="">
+                    <span class="material-symbols-outlined">note_add</span>
+                    <p>Pinjam</p>
+                </a>
+            </div>
+            <div class="nav anggota">
+                <a href="">
+                    <span class="material-symbols-outlined">groups</span>
+                    <p>Anggota</p>
+                </a>
+            </div>
+            <div class="nav nav-aktif admin">
+                <a href="">
+                    <span class="material-symbols-outlined">person</span>
+                    <p>Admin</p>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <h1><a href="tes-beranda.html"><span class="material-symbols-outlined">arrow_back_ios</span>Admin</a></h1>
+            <div class="menu">
+                <p class="sidebar-aktif"><a href=""><span class="material-symbols-outlined">person_add</span>Tambah
+                        Akun</a></p>
+                <p><a href="tes-daftar-akun.html"><span class="material-symbols-outlined">list_alt</span>Daftar
+                        Akun</a></p>
+                <p><a href="tes-akun-saya.html"><span class="material-symbols-outlined">touch_app</span>Akun Saya</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="konten">
+        <h2>Formulir</h2>
+        <form>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="xxxxxxxxxx@gmail.com">
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password"
+                    placeholder="Terdiri dari 8 karakter dengan campuran huruf, angka, simbol">
+            </div>
+
+            <div>
+                <label for="konfirmasi-password">Konfirmasi Password</label>
+                <input type="password" id="konfirmasi-password" placeholder="Ulangi password">
+            </div>
+
+            <div class="nama-lengkap">
+                <div>
+                    <label for="nama-depan">Nama Depan</label>
+                    <input type="text" id="nama-depan" class="input-nama-depan" placeholder="Mega">
+                </div>
+                <div>
+                    <label for="nama-belakang">Nama Belakang</label>
+                    <input type="text" id="nama-belakang" class="input-nama-belakang" placeholder="Chan">
+                </div>
+            </div>
+
+            <div>
+                <label for="kontak">Nomor Kontak</label>
+                <input type="text" id="kontak" placeholder="08xx-xxxx-xxxx">
+            </div>
+
+            <div>
+                <label for="foto">Foto Profil</label>
+                <div class="file-input-wrapper">
+                    <label for="foto" class="custom-file-label">Pilih Foto</label>
+                    <input type="file" id="foto">
+                    <span class="file-desc">Foto 4x6 - Tipe .jpg/.png/.jpeg - Max 1000kb</span>
+                </div>
+                <p class="upload-status" id="uploadStatus">Belum ada foto dipilih</p>
+            </div>
+
+
+            <div class="tombol">
+                <button type="reset" class="btn-batal">Batal</button>
+                <button type="submit" class="btn-simpan">Simpan</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const fileInput = document.getElementById("foto");
+        const uploadStatus = document.getElementById("uploadStatus");
+
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                uploadStatus.textContent = `Foto dipilih: ${fileName}`;
+                uploadStatus.style.color = "green";
+            } else {
+                uploadStatus.textContent = "Belum ada foto dipilih";
+                uploadStatus.style.color = "gray";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
