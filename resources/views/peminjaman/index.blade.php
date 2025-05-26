@@ -41,11 +41,11 @@
             });
         </script>
 
-<!-- 
-        <div class="tombol">
-            <button onclick="window.location.href='{{ route('peminjaman.create') }}'" class="bt-tambah">Tambah
-                Peminjaman</button>
-        </div> -->
+        <!-- 
+            <div class="tombol">
+                <button onclick="window.location.href='{{ route('peminjaman.create') }}'" class="bt-tambah">Tambah
+                    Peminjaman</button>
+            </div> -->
         <table class="daftar">
             <tr class="judul">
                 <th>Nama Anggota</th>
@@ -55,12 +55,17 @@
             </tr>
             @foreach ($peminjaman as $item)
                 <tr>
-                    <td>{{ $item->anggota->nama }}</td>
+                    <td>{{ $item->anggota->nama ?? '-' }}</td>
                     <td>{{ optional($item->buku)->judul ?? '-' }}</td>
                     <td>
-                        <p
-                            class="status {{ $item->status == 'Selesai' ? 'status-selesai' : '' }} {{ $item->status == 'Sedang Dipinjam' ? 'status-dipinjam' : '' }}">
-                            {{ $item->status }}
+                        @php
+                            $isTerlambat = $item->status == 'Sedang Dipinjam' && \Carbon\Carbon::parse($item->tanggal_kembali)->lt(\Carbon\Carbon::today());
+                        @endphp
+                        <p class="status 
+                                        {{ $item->status == 'Selesai' ? 'status-selesai' : '' }}
+                                        {{ $item->status == 'Sedang Dipinjam' ? 'status-dipinjam' : '' }}
+                                        {{ $isTerlambat ? 'status-terlambat' : '' }}">
+                            {{ $isTerlambat ? 'Terlambat' : $item->status }}
                         </p>
                     </td>
                     <td>
