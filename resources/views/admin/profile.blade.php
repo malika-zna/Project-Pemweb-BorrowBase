@@ -214,18 +214,17 @@
 
         <div class="aksi-btn" style="display: flex; gap: 12px; margin-top: 24px;">
             <!-- Tombol Hapus Akun -->
-            <form method="POST" action="{{ route('admin.profile.destroy') }}"
-                onsubmit="return confirm('Yakin ingin menghapus akun ini secara permanen?');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="del-btn">
-                    <span class="material-symbols-outlined">delete</span>
-                </button>
+            <form id="formHapusAkun" method="POST" action="{{ route('admin.profile.destroy') }}"></form>
+            @csrf
+            @method('DELETE')
+            <button type="button" class="del-btn" onclick="tampilPopup()">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
             </form>
             <!-- Tombol Logout -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="logout-btn">
+                <button type="buttom" class="logout-btn">
                     <span class="material-symbols-outlined">logout</span>
                 </button>
             </form>
@@ -234,12 +233,11 @@
 
     <div class="popup-keluar" id="popupKeluar">
         <div class="popup-box">
-            <h4>Keluar dari akun</h4>
-            <p>Apakah anda yakin ingin keluar dari akun anda? Anda akan diminta untuk membuat akun baru jika keluar dari
-                akun ini!</p>
+            <h4>Hapus akun</h4>
+            <p>Apakah anda yakin ingin menghapus akun anda secara permanen? Tindakan ini tidak dapat dibatalkan</p>
             <div class="popup-aksi">
-                <button onclick="tutupPopup()">Tidak</button>
-                <button>iya</button>
+                <button type="button" onclick="tutupPopup()">Batal</button>
+                <button type="button" onclick="submitHapusAkun()">iya</button>
             </div>
         </div>
     </div>
@@ -266,6 +264,9 @@
 
         function tutupPopup() {
             document.getElementById("popupKeluar").style.display = "none";
+        }
+        function submitHapusAkun() {
+            document.getElementById("formHapusAkun").submit();
         }
     </script>
     </div>
