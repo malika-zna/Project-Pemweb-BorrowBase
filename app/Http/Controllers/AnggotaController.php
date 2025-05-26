@@ -10,6 +10,9 @@ class AnggotaController extends Controller
     public function index()
     {
         $anggota = Anggota::all();
+        foreach ($anggota as $a) {
+            $a->jumlah_peminjaman_aktif = $a->peminjaman()->where('status', 'Sedang Dipinjam')->count();
+        }
         return view('anggota.index', compact('anggota'));
     }
 
@@ -65,6 +68,10 @@ class AnggotaController extends Controller
     public function destroy($id)
     {
         $anggota = Anggota::findOrFail($id);
+        $masihDipinjam = $anggota->peminjaman()->where('status', 'Sedang Dipinjam')->exists();
+        if ($masihDipinjam) {
+            return redirect()->route('anggota.index')->with('error', 'Anggota tidak dapat dihapus karena masih memiliki peminjaman aktif.');
+        }
         $anggota->delete();
         return redirect()->route('anggota.index')->with('success', 'Anggota berhasil dihapus.');
     }
