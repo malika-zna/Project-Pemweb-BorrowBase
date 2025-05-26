@@ -555,7 +555,8 @@ body {
     }
 }
 
-#jendela-konfirmasi {
+#jendela-konfirmasi,
+#jendela-info {
     display: none;
     position: fixed;
     top: 0;
@@ -568,7 +569,8 @@ body {
     justify-content: center
 }
 
-#jendela-konfirmasi div {
+#jendela-konfirmasi div,
+#jendela-info div {
     background-color: #fff;
     padding: 40px 40px;
     border-radius: 10px;
@@ -618,6 +620,21 @@ body {
 
     .batal:hover {
         background-color: #888;
+        cursor: pointer;
+    }
+
+    .oke {
+        padding: 8px 0px;
+        width: 100px;
+        border-radius: 15px;
+        background-color: #51d8ea;
+        color: #fff;
+        border: none;
+        margin-right: 20px;
+    }
+
+    .oke:hover {
+        background-color: #82e5f3;
         cursor: pointer;
     }
 }
