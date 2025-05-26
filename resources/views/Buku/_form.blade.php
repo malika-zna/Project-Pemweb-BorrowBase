@@ -45,7 +45,15 @@
 </div>
 <div class="isian">
     <label for="sampul">Sampul</label>
-    <input name="sampul" type="file">
+    <div class="up-file-container">
+        <button class="up-file" type="button" onclick="document.getElementById('sampul').click();">
+            <span class="material-symbols-outlined" style="vertical-align: middle;">upload</span>
+            Pilih Sampul
+        </button>
+        <input id="file-name" type="text" value="Belum memilih file" readonly>
+        <input id="sampul" name="sampul" type="file" style="display: none;"
+            onchange="document.getElementById('file-name').value = this.files[0]?.name || 'Belum memilih file';">
+    </div>
 </div>
 <div class="isian">
     <label for="deskripsi">Deskripsi</label>
