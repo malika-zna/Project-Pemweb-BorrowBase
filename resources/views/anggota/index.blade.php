@@ -33,7 +33,8 @@
                             style="display:inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type="button" class="hapus" onclick="tampilkanKonfirmasi({{ $a->id }})">Hapus</button>
+                            <button type="button" class="hapus"
+                                onclick="tampilkanKonfirmasi({{ $a->id }}, {{ $a->jumlah_peminjaman_aktif }})">Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -61,24 +62,53 @@
                 </div>
             </div>
         </div>
-        <script>
-            let formIdHapus = null;
+    </div>
+    <div id="popupInfo" class="pop-up-window-hapus" style="display:none;">
+        <div class="basic-dialog">
+            <div class="text-content">
+                <div class="title-description">
+                    <h2 class="headline">Data tidak dapat dihapus!</h2>
+                    <p class="supporting-text">Anggota masih memiliki peminjaman aktif.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="actions2">
+                    <div class="primary-button" onclick="submitFormHapus()">
+                        <div class="state-layer"><span class="label-text2">Oke</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let formIdHapus = null;
+        let jumlahPeminjamanAktif = 0;
 
-            function tampilkanKonfirmasi(id) {
-                formIdHapus = 'formHapus-' + id;
+        function tampilkanKonfirmasi(id, jumlahAktif) {
+            formIdHapus = 'formHapus-' + id;
+            jumlahPeminjamanAktif = jumlahAktif;
+            if (jumlahPeminjamanAktif > 0) {
+                document.getElementById('popupInfo').style.display = 'flex';
+            } else {
                 document.getElementById('popupKonfirmasi').style.display = 'flex';
             }
+        }
 
-            function sembunyikanKonfirmasi() {
-                document.getElementById('popupKonfirmasi').style.display = 'none';
-                formIdHapus = null;
-            }
+        function sembunyikanKonfirmasi() {
+            document.getElementById('popupKonfirmasi').style.display = 'none';
+            formIdHapus = null;
+        }
 
-            function submitFormHapus() {
-                if (formIdHapus) {
-                    document.getElementById(formIdHapus).submit();
-                }
+        function sembunyikanInfo() {
+            document.getElementById('popupInfo').style.display = 'none';
+            formIdHapus = null;
+        }
+
+        function submitFormHapus() {
+            if (formIdHapus) {
+                document.getElementById(formIdHapus).submit();
             }
-        </script>
-    </div>
+        }
+    </script>
+
 @endsection
