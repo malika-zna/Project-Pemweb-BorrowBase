@@ -51,12 +51,12 @@
                             <td>{{ $item->buku->isbn ?? '-' }}</td>
                             <td style="text-align:left;">{{ $item->buku->judul ?? '-' }}</td>
                             <td><span class="jumlah-buku">{{ $item->kuantitas }}</span></td>
-                            <td>{{ \Carbon\Carbon::parse($item->jatuh_tempo)->format('d/m/Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->tanggal_kembali)->format('d/m/Y') }}</td>
                             <td>
-                                @if($item->status == 'kembali')
-                                    <span class="status-sudah">Sudah Kembali</span>
-                                @elseif($item->status == 'terlambat')
+                                @if(\Carbon\Carbon::parse($item->tanggal_kembali)->lt(\Carbon\Carbon::today()) && $item->status != 'Selesai')
                                     <span class="status-terlambat">Terlambat</span>
+                                @elseif($item->status == 'Selesai')
+                                    <span class="status-sudah">Selesai</span>
                                 @else
                                     <span class="status-dipinjam">Dipinjam</span>
                                 @endif
