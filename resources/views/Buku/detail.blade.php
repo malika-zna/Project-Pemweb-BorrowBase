@@ -76,14 +76,37 @@
                 <button class="hapus" onclick="submitHapus()">Hapus</button>
             </div>
         </div>
+        <div id="jendela-info">
+            <div class="dialog">
+                <h2>Buku tidak dapat dihapus!</h2>
+                <p>Buku tidak bisa dihapus karena masih ada yang meminjam.</p>
+                <button class="oke" onclick="hideModalInfo()">Oke</button>
+            </div>
+        </div>
         <script>
+            var jumlahDipinjam = {{ $buku->jumlah_dipinjam }};
             function showModal() {
-                document.getElementById('jendela-konfirmasi').style.display = 'flex';
+                if (jumlahDipinjam > 0) {
+                    showModalInfo();
+                } else {
+                    document.getElementById('jendela-konfirmasi').style.display = 'flex';
+                }
             }
             function hideModal() {
                 document.getElementById('jendela-konfirmasi').style.display = 'none';
             }
+            function showModalInfo() {
+                document.getElementById('jendela-info').style.display = 'flex';
+            }
+            function hideModalInfo() {
+                document.getElementById('jendela-info').style.display = 'none';
+            }
             function submitHapus() {
+                if (jumlahDipinjam > 0) {
+                    showModalInfo();
+                    hideModal();
+                    return false;
+                }
                 document.getElementById('form-hapus').submit();
             }
         </script>
