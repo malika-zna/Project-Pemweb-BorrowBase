@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="sidebar-menu">
-        <h1><a href="/"><span class="material-symbols-outlined">arrow_back_ios</span>Peminjaman</a></h1>
+        <h1><a href="{{ route('beranda') }}"><span class="material-symbols-outlined">arrow_back_ios</span>Peminjaman</a></h1>
         <div class="menu">
             <p class="sidebar-aktif">
                 <a href="{{ route('peminjaman.index') }}">
