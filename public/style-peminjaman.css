@@ -313,6 +313,19 @@ body {
                     display: inline-block;
                 }
 
+                .status-terlambat {
+                    font-size: 12px;
+                    text-align: center;
+                    /* width: fit-content; */
+                    white-space: nowrap;
+                    padding: 5px 15px;
+                    margin: 0px;
+                    background-color: red;
+                    /* font-weight: bold; */
+                    border-radius: 25px;
+                    display: inline-block;
+                }
+
                 /* font-size: 12px;
                     text-align: center;
                     width: fit-content;
