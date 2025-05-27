@@ -62,12 +62,6 @@
 
     <script>
     document.getElementById('back-kategori').addEventListener('click', function () {
-      window.location.href = 'HalamanKategoriBuku.html';
-    });
-    </script>
-
-    <script>
-    document.getElementById('back-kategori').addEventListener('click', function () {
       window.location.href = '{{ route('kategori.index') }}';
     });
     </script>
