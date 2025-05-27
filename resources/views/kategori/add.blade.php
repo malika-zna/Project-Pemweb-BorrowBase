@@ -39,7 +39,7 @@
 
         <script>
             document.getElementById('back-kategori').addEventListener('click', function () {
-                window.location.href = 'HalamanBukuFiksi.html';
+                window.location.href = '{{ route('kategori.show', ['kategori' => $kategori->id_kategori]) }}';
             });
         </script>
     </div>
