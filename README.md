@@ -20,4 +20,4 @@ Aplikasi kami yang bernama BorrowBase, merupakan sistem manajemen buku berbasis 
 245150401111007 - Malika Zahro Nadia Aulia</br>
 245150401111008 - Fadilah Puji Laily Maulidiyah</br>
 245150407111001 - Cantika Zahna Brillianto Putri</br>
-245150401111018 - Siti Rahma Nurhaibah</br>
+245150407111018 - Siti Rahma Nurhaibah</br>
